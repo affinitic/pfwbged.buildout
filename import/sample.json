@@ -1,0 +1,56 @@
+{
+    "001156764": {
+        "children": [], 
+        "equivalents": [
+            "commissaire aupr\u00e8s des Hautes Ecoles", 
+            "commissaires aupr\u00e8s des Hautes Ecoles"
+        ], 
+        "historical_note": null, 
+        "parents": [], 
+        "related": [], 
+        "scope_note": "La fonction de commissaire aupr\u00e8s des hautes \u00e9coles a \u00e9t\u00e9 cr\u00e9\u00e9e par le d\u00e9cret de la Communaut\u00e9 fran\u00e7aise du 9 septembre 1996, MB du 15/10/1996, relatif au financement des hautes \u00e9coles organis\u00e9es ou subventionn\u00e9es par la Communaut\u00e9 fran\u00e7aise.", 
+        "title": "commissaires - d\u00e9l\u00e9gu\u00e9s du Gouvernement aupr\u00e8s des Hautes Ecoles et des Ecoles sup\u00e9rieures des Arts"
+    }, 
+    "001157792": {
+        "children": [], 
+        "equivalents": [
+            "Anders gaan leven (AGALEV)"
+        ], 
+        "historical_note": "jusqu'au 15 novembre 2003, date de changement de nom du parti en Groen!", 
+        "parents": [
+            "001157243"
+        ], 
+        "related": [
+            "001156750"
+        ], 
+        "scope_note": null, 
+        "title": "AGALEV (Anders gaan leven)"
+    }, 
+    "001157243": {
+        "children": [
+            "001157792", 
+            "001156750"
+        ], 
+        "equivalents": [
+            "parti politique"
+        ], 
+        "historical_note": null, 
+        "parents": [], 
+        "related": [], 
+        "scope_note": null, 
+        "title": "partis politiques"
+    }, 
+    "001156750": {
+        "children": [], 
+        "equivalents": [], 
+        "historical_note": "\u00e0 partir de 2003, date de changement de nom du parti, nomm\u00e9 jusqu'\u00e0 cette date, AGALEV", 
+        "parents": [
+            "001157243"
+        ], 
+        "related": [
+            "001157792"
+        ], 
+        "scope_note": null, 
+        "title": "Groen!"
+    }
+}
