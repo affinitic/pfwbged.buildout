@@ -11,6 +11,8 @@ bin/
 conf.ini
 develop-eggs/
 etc/
+include/
+lib/
 parts/
 src/
 var/
