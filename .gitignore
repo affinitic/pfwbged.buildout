@@ -16,3 +16,7 @@ lib/
 parts/
 src/
 var/
+pfwbged.sublime-project
+pfwbged.sublime-workspace
+uuid.txt
+
