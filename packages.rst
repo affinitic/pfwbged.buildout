@@ -2,7 +2,6 @@
 collective.contact.core             Yes     Yes     Yes
 collective.contact.plonegroup       Yes     No      Yes
 collective.contact.widget           Yes     Yes     No      There is no tests
-collective.local.workspace          No      No      No
 collective.dms.basecontent          Yes     Yes     Yes
 collective.dms.batchimport          Yes     Yes     Yes
 collective.dms.mailcontent          Yes     Yes     Yes
