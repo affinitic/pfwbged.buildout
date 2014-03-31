@@ -18,6 +18,8 @@ DAEMON=/opt/pfwbged.buildout/bin/supervisord
 PIDFILE=/var/run/$NAME.pid
 DAEMON_ARGS="-u zope --pidfile $PIDFILE"
 SCRIPTNAME=/etc/init.d/$NAME
+HOME=/opt/pfwbged.buildout
+export HOME
 
 # Exit if the package is not installed
 [ -x "$DAEMON" ] || exit 0
