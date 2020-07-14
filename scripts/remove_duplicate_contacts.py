@@ -93,12 +93,23 @@ class Match:
                 info.append(value.encode("utf8"))
         return ", ".join(info)
 
+    def get_content(self, contact):
+        titles = [child.Title() for child in contact.values()]
+        if titles:
+            return "{0} élément(s)\n{1}".format(
+                len(titles),
+                "\n".join(["  - {0}".format(title) for title in titles]),
+            )
+        else:
+            return "vide"
+
     def get_full_info(self, contact):
-        return "{0}\ndate de création: {1}\ncontact: {2}\nadresse: {3}".format(
+        return "{0}\ndate de création: {1}\ncontact: {2}\nadresse: {3}\ncontenu: {4}".format(
             contact.get_full_title().encode("utf8"),
             contact.creation_date.strftime("%d/%m/%Y %H:%M:%S"),
             self.get_contact_info(contact),
             self.get_address_info(contact),
+            self.get_content(contact),
         )
 
     @staticmethod
