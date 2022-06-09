@@ -1,0 +1,106 @@
+---
+version: '3.4'
+services:
+  zeo:
+    image: ged.pfwb.be/pfwb-ged:${BUILD_ID}
+    volumes:
+      - blobstorage:/data/blobstorage
+      - filestorage:/data/filestorage
+      - log:/data/log
+      - type: tmpfs
+        target: /var/tmp
+    command: zeoserver
+    healthcheck:
+      disable: true
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.hostname == pfwb-ubuged6
+    environment:
+      - HTTP_PORT=8080
+      - HOSTNAME_HOST=local
+      - PROJECT_ID=plone
+  instance:
+    image: ged.pfwb.be/pfwb-ged:${BUILD_ID}
+    volumes:
+      - blobstorage:/data/blobstorage
+      - log:/data/log
+
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.hostname == pfwb-ubuged6
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.pfwb-ged.rule=Host(`test.ged.pfwb.be`)"
+        - "traefik.http.routers.pfwb-ged.entrypoints=web"
+        - "traefik.http.services.pfwb-ged.loadbalancer.server.port=8080"
+        - "traefik.http.routers.pfwb-ged.middlewares=add-pfwb-ged-vhost"
+        - "traefik.http.middlewares.add-pfwb-ged-vhost.addprefix.prefix=/VirtualHostBase/https/test.ged.pfwb.be:443/Plone/VirtualHostRoot"
+    ports:
+      - 8080
+    networks:
+      - default
+      - traefik
+    environment:
+      - HTTP_PORT=8080
+      - ZEO_ADDRESS=zeo:8100
+      - HOSTNAME_HOST=local
+      - PROJECT_ID=plone
+      - ROOT_URL=https://ged.pfwb.be
+  worker:
+    image: ged.pfwb.be/pfwb-ged:${BUILD_ID}
+    volumes:
+      - blobstorage:/data/blobstorage
+      - log:/data/log
+    command: worker
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.hostname == pfwb-ubuged6
+    networks:
+      - default
+    environment:
+      - HTTP_PORT=8080
+      - ZEO_ADDRESS=zeo:8100
+      - HOSTNAME_HOST=local
+      - PROJECT_ID=plone
+      - ROOT_URL=https://test.ged.pfwb.be
+  redis:
+    image: redis
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.hostname == pfwb-ubuged6
+    networks:
+      - default
+  solr:
+    image: ged.pfwb.be/pfwb-ged:${BUILD_ID}
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.hostname == pfwb-ubuged6
+    volumes:
+      - solr:/plone/var/solr
+      - log:/data/log
+    command: solr-instance
+    networks:
+      - default
+    healthcheck:
+      disable: true
+
+networks:
+  traefik:
+    external:
+      name: traefik
+
+volumes:
+  blobstorage:
+  filestorage:
+  solr:
+  log:
