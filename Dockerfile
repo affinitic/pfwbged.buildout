@@ -54,6 +54,7 @@ RUN apt-get update \
     libxml2-dev \
     libxslt1.1 \
     libxslt1-dev \
+    lynx \
     multitail \
     netcat \
     openssh-client \
@@ -63,7 +64,13 @@ RUN apt-get update \
     python-pip \
     rsync \
     ruby \
-    wv
+    tidy \
+    unrtf \
+    wv \
+  && curl -O http://archive.ubuntu.com/ubuntu/pool/universe/x/xlhtml/xlhtml_0.5.1-6ubuntu1_amd64.deb \
+  && curl -O http://archive.ubuntu.com/ubuntu/pool/universe/x/xlhtml/ppthtml_0.5.1-6ubuntu1_amd64.deb \
+  && dpkg -i xlhtml_0.5.1-6ubuntu1_amd64.deb ppthtml_0.5.1-6ubuntu1_amd64.deb \
+  && rm xlhtml_0.5.1-6ubuntu1_amd64.deb ppthtml_0.5.1-6ubuntu1_amd64.deb
 
 
 COPY *.cfg /plone/
