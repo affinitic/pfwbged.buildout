@@ -34,11 +34,11 @@ services:
           - node.hostname == pfwb-ubuged6
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.pfwb-ged.rule=Host(`test.ged.pfwb.be`)"
+        - "traefik.http.routers.pfwb-ged.rule=Host(`ged-staging.pfwb.be`)"
         - "traefik.http.routers.pfwb-ged.entrypoints=web"
         - "traefik.http.services.pfwb-ged.loadbalancer.server.port=8080"
         - "traefik.http.routers.pfwb-ged.middlewares=add-pfwb-ged-vhost"
-        - "traefik.http.middlewares.add-pfwb-ged-vhost.addprefix.prefix=/VirtualHostBase/https/test.ged.pfwb.be:443/Plone/VirtualHostRoot"
+        - "traefik.http.middlewares.add-pfwb-ged-vhost.addprefix.prefix=/VirtualHostBase/https/ged-staging.pfwb.be:443/Plone/VirtualHostRoot"
     ports:
       - 8080
     networks:
@@ -49,7 +49,7 @@ services:
       - ZEO_ADDRESS=zeo:8100
       - HOSTNAME_HOST=local
       - PROJECT_ID=plone
-      - ROOT_URL=https://ged.pfwb.be
+      - ROOT_URL=https://ged-staging.pfwb.be
   worker:
     image: ged.pfwb.be/pfwb-ged:${BUILD_ID}
     volumes:
@@ -68,7 +68,7 @@ services:
       - ZEO_ADDRESS=zeo:8100
       - HOSTNAME_HOST=local
       - PROJECT_ID=plone
-      - ROOT_URL=https://test.ged.pfwb.be
+      - ROOT_URL=https://ged-staging.pfwb.be
   redis:
     image: redis
     deploy:
