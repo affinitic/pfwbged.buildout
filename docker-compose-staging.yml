@@ -38,7 +38,7 @@ services:
         - "traefik.http.routers.pfwb-ged.entrypoints=web"
         - "traefik.http.services.pfwb-ged.loadbalancer.server.port=8080"
         - "traefik.http.routers.pfwb-ged.middlewares=add-pfwb-ged-vhost"
-        - "traefik.http.middlewares.add-pfwb-ged-vhost.addprefix.prefix=/VirtualHostBase/https/ged-staging.pfwb.be:443/Plone/VirtualHostRoot"
+        - "traefik.http.middlewares.add-pfwb-ged-vhost.addprefix.prefix=/VirtualHostBase/https/ged-staging.pfwb.be:443/pfwbged/VirtualHostRoot"
     ports:
       - 8080
     networks:
