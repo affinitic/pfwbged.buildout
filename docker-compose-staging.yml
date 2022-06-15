@@ -28,7 +28,7 @@ services:
       - log:/data/log
 
     deploy:
-      replicas: 1
+      replicas: 8
       placement:
         constraints:
           - node.hostname == pfwb-ubuged6
