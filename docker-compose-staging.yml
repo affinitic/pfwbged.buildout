@@ -34,12 +34,12 @@ services:
           - node.hostname == pfwb-ubuged6
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.pfwb-ged-staging-login.rule=Host(`ged-staging.pfwb.be`) && Method(`Post`) && Path (`/`)"
-        - "traefik.http.routers.pfwb-ged-staging-login.priority=1"
-        - "traefik.http.routers.pfwb-ged-staging-login.entrypoints=web"
-        - "traefik.http.services.pfwb-ged-staging-login.loadbalancer.server.port=8080"
-        - "traefik.http.routers.pfwb-ged-staging-login.middlewares=add-pfwb-ged-staging-login-vhost"
-        - "traefik.http.middlewares.add-pfwb-ged-staging-login-vhost.addprefix.prefix=/VirtualHostBase/https/ged-staging.pfwb.be:443/pfwbged/VirtualHostRoot/dashboard"
+        #- "traefik.http.routers.pfwb-ged-staging-login.rule=Host(`ged-staging.pfwb.be`) && Method(`Post`) && Path (`/`)"
+        #- "traefik.http.routers.pfwb-ged-staging-login.priority=1"
+        #- "traefik.http.routers.pfwb-ged-staging-login.entrypoints=web"
+        #- "traefik.http.services.pfwb-ged-staging-login.loadbalancer.server.port=8080"
+        #- "traefik.http.routers.pfwb-ged-staging-login.middlewares=add-pfwb-ged-staging-login-vhost"
+        #- "traefik.http.middlewares.add-pfwb-ged-staging-login-vhost.addprefix.prefix=/VirtualHostBase/https/ged-staging.pfwb.be:443/pfwbged/VirtualHostRoot/dashboard"
         - "traefik.http.routers.pfwb-ged-staging.rule=Host(`ged-staging.pfwb.be`)"
         - "traefik.http.routers.pfwb-ged-staging.priority=2"
         - "traefik.http.routers.pfwb-ged-staging.entrypoints=web"
