@@ -34,11 +34,20 @@ services:
           - node.hostname == pfwb-ubuged5
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.pfwb-ged.rule=Host(`ged.pfwb.be`)"
-        - "traefik.http.routers.pfwb-ged.entrypoints=web"
-        - "traefik.http.services.pfwb-ged.loadbalancer.server.port=8080"
-        - "traefik.http.routers.pfwb-ged.middlewares=add-pfwb-ged-vhost"
-        - "traefik.http.middlewares.add-pfwb-ged-vhost.addprefix.prefix=/VirtualHostBase/https/ged.pfwb.be:443/pfwbged/VirtualHostRoot"
+        - "traefik.http.routers.pfwb-ged-prod-login.rule=Host(`ged.pfwb.be`) && Method(`GET`) && Path (`/`)"
+        - "traefik.http.routers.pfwb-ged-prod-login.priority=2"
+        - "traefik.http.routers.pfwb-ged-prod-login.entrypoints=web"
+        - "traefik.http.routers.pfwb-ged-prod-login.service=pfwb-ged-prod-login"
+        - "traefik.http.services.pfwb-ged-prod-login.loadbalancer.server.port=8080"
+        - "traefik.http.routers.pfwb-ged-prod-login.middlewares=add-pfwb-ged-prod-login-vhost"
+        - "traefik.http.middlewares.add-pfwb-ged-prod-login-vhost.addprefix.prefix=/VirtualHostBase/https/ged.pfwb.be:443/pfwbged/VirtualHostRoot/dashboard"
+        - "traefik.http.routers.pfwb-ged-prod.rule=Host(`ged.pfwb.be`)"
+        - "traefik.http.routers.pfwb-ged-prod.priority=1"
+        - "traefik.http.routers.pfwb-ged-prod.entrypoints=web"
+        - "traefik.http.routers.pfwb-ged-prod.service=pfwb-ged-prod"
+        - "traefik.http.services.pfwb-ged-prod.loadbalancer.server.port=8080"
+        - "traefik.http.routers.pfwb-ged-prod.middlewares=add-pfwb-ged-prod-vhost"
+        - "traefik.http.middlewares.add-pfwb-ged-prod-vhost.addprefix.prefix=/VirtualHostBase/https/ged.pfwb.be:443/pfwbged/VirtualHostRoot"
     ports:
       - 8080
     networks:
