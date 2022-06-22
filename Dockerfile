@@ -30,6 +30,7 @@ RUN apt-get update \
     cabextract \
     default-jre \
     dpkg-dev \
+    file \
     gcc \
     ghostscript \
     git \
