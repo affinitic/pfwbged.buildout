@@ -25,6 +25,7 @@ services:
     image: ged.pfwb.be/pfwb-ged:${BUILD_ID}
     volumes:
       - blobstorage:/data/blobstorage
+      - documentviewer:/data/documentviewer
       - log:/data/log
 
     deploy:
@@ -64,6 +65,7 @@ services:
     volumes:
       - blobstorage:/data/blobstorage
       - log:/data/log
+      - documentviewer:/data/documentviewer
     command: worker
     deploy:
       replicas: 1
@@ -113,3 +115,4 @@ volumes:
   filestorage:
   solr:
   log:
+  documentviewer:
