@@ -97,7 +97,9 @@ services:
         constraints:
           - node.hostname == pfwb-ubuged5
     volumes:
-      - solr:/plone/var/solr
+      - solr:/data/solr
+      - blobstorage:/data/blobstorage
+      - documentviewer:/data/documentviewer
       - log:/data/log
     command: solr-instance
     networks:
