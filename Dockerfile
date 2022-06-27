@@ -28,7 +28,7 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     build-essential \
     cabextract \
-    default-jre \
+    openjdk-8-jre \
     dpkg-dev \
     file \
     gcc \
