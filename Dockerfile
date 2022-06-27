@@ -94,9 +94,7 @@ USER plone
 WORKDIR /plone
 
 VOLUME /data/blobstorage
-VOLUME /data/filestorage
 VOLUME /data/log
-VOLUME /data/solr
 
 HEALTHCHECK --interval=1m --timeout=5s --start-period=1m \
   CMD nc -z -w5 127.0.0.1 8080 || exit 1
