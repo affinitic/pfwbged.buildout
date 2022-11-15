@@ -27,7 +27,8 @@ services:
       - blobstorage:/data/blobstorage
       - documentviewer:/data/documentviewer
       - log:/data/log
-
+      - type: tmpfs
+        target: /plone/tmp
     deploy:
       replicas: 8
       placement:
@@ -66,6 +67,8 @@ services:
       - blobstorage:/data/blobstorage
       - log:/data/log
       - documentviewer:/data/documentviewer
+      - type: tmpfs
+        target: /plone/tmp
     command: worker
     deploy:
       replicas: 1
