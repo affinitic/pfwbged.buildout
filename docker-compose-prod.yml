@@ -2,7 +2,7 @@
 version: '3.4'
 services:
   zeo:
-    image: ged.pfwb.be/pfwb-ged:${BUILD_ID}
+    image: docker-registry.pfwb.be/pfwb-ged:${BUILD_ID}
     volumes:
       - blobstorage:/data/blobstorage
       - filestorage:/data/filestorage
@@ -22,7 +22,7 @@ services:
       - HOSTNAME_HOST=local
       - PROJECT_ID=plone
   instance:
-    image: ged.pfwb.be/pfwb-ged:${BUILD_ID}
+    image: docker-registry.pfwb.be/pfwb-ged:${BUILD_ID}
     volumes:
       - blobstorage:/data/blobstorage
       - documentviewer:/data/documentviewer
@@ -62,7 +62,7 @@ services:
       - PROJECT_ID=plone
       - ROOT_URL=https://ged.pfwb.be
   worker:
-    image: ged.pfwb.be/pfwb-ged:${BUILD_ID}
+    image: docker-registry.pfwb.be/pfwb-ged:${BUILD_ID}
     volumes:
       - blobstorage:/data/blobstorage
       - documentviewer:/data/documentviewer
@@ -93,7 +93,7 @@ services:
     networks:
       - default
   solr:
-    image: ged.pfwb.be/pfwb-ged:${BUILD_ID}
+    image: docker-registry.pfwb.be/pfwb-ged:${BUILD_ID}
     deploy:
       replicas: 1
       placement:
