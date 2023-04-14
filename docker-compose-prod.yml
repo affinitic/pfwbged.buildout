@@ -61,6 +61,9 @@ services:
       - HOSTNAME_HOST=local
       - PROJECT_ID=plone
       - ROOT_URL=https://ged.pfwb.be
+    extra_hosts:
+      - "dc1.dom.pfwb.be:172.23.3.139"
+      - "dc2.dom.pfwb.be:172.23.3.159"
   worker:
     image: docker-registry.pfwb.be/pfwb-ged:${BUILD_ID}
     volumes:
@@ -83,6 +86,9 @@ services:
       - HOSTNAME_HOST=local
       - PROJECT_ID=plone
       - ROOT_URL=https://ged.pfwb.be
+    extra_hosts:
+      - "dc1.dom.pfwb.be:172.23.3.139"
+      - "dc2.dom.pfwb.be:172.23.3.159"
   redis:
     image: redis
     deploy:
