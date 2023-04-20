@@ -61,6 +61,7 @@ services:
       - HOSTNAME_HOST=local
       - PROJECT_ID=plone
       - ROOT_URL=https://ged.pfwb.be
+      - zope_i18n_allowed_languages=fr
     extra_hosts:
       - "dc1.dom.pfwb.be:172.23.3.139"
       - "dc2.dom.pfwb.be:172.23.3.159"
@@ -86,6 +87,7 @@ services:
       - HOSTNAME_HOST=local
       - PROJECT_ID=plone
       - ROOT_URL=https://ged.pfwb.be
+      - zope_i18n_allowed_languages=fr
     extra_hosts:
       - "dc1.dom.pfwb.be:172.23.3.139"
       - "dc2.dom.pfwb.be:172.23.3.159"
