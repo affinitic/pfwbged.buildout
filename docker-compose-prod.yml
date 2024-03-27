@@ -2,7 +2,7 @@
 version: '3.4'
 services:
   zeo:
-    image: docker-registry.pfwb.be/pfwb-ged:${BUILD_ID}
+    image: docker-registry.pfwb.be/pfwb-ged:17
     volumes:
       - blobstorage:/data/blobstorage
       - filestorage:/data/filestorage
