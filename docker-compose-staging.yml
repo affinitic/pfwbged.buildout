@@ -68,6 +68,41 @@ services:
       - "dc2.dom.pfwb.be:172.23.3.159"
       - "SRV-WIN-DC02.dom.pfwb.be:10.80.1.148"
       - "SRV-WIN-DC04.dom.pfwb.be:10.80.1.125"
+
+  instance-debug:
+    image: docker-registry.pfwb.be/pfwb-ged:${BUILD_ID}
+    command: sleep infinity
+    healthcheck:
+      disable: true
+    volumes:
+      - blobstorage:/data/blobstorage
+      - documentviewer:/data/documentviewer
+      - log:/data/log
+      - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt:ro
+      - type: tmpfs
+        target: /plone/tmp
+    deploy:
+      replicas: 0
+      placement:
+        constraints:
+          - node.hostname == pfwb-ubuged6
+    ports:
+      - 32000:8080
+    networks:
+      - default
+    environment:
+      - HTTP_PORT=8080
+      - ZEO_ADDRESS=zeo:8100
+      - HOSTNAME_HOST=local
+      - PROJECT_ID=plone
+      - ROOT_URL=https://ged-staging.pfwb.be
+      - zope_i18n_allowed_languages=fr
+    extra_hosts:
+      - "dc1.dom.pfwb.be:172.23.3.139"
+      - "dc2.dom.pfwb.be:172.23.3.159"
+      - "SRV-WIN-DC02.dom.pfwb.be:10.80.1.148"
+      - "SRV-WIN-DC04.dom.pfwb.be:10.80.1.125"
+
   worker:
     image: docker-registry.pfwb.be/pfwb-ged:${BUILD_ID}
     volumes:
