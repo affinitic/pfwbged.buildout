@@ -27,6 +27,7 @@ services:
       - blobstorage:/data/blobstorage
       - documentviewer:/data/documentviewer
       - log:/data/log
+      - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt:ro
       - type: tmpfs
         target: /plone/tmp
     deploy:
@@ -71,6 +72,7 @@ services:
       - blobstorage:/data/blobstorage
       - documentviewer:/data/documentviewer
       - log:/data/log
+      - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt:ro
       - type: tmpfs
         target: /plone/tmp
     command: worker
