@@ -36,6 +36,7 @@ RUN apt-get update \
     git \
     gosu \
     graphicsmagick \
+    ldap-utils \
     libc6-dev \
     libjpeg-dev \
     libldap-2.4-2 \
