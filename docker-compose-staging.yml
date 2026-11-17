@@ -51,8 +51,6 @@ services:
         - "traefik.http.services.pfwb-ged-staging.loadbalancer.server.port=8080"
         - "traefik.http.routers.pfwb-ged-staging.middlewares=add-pfwb-ged-staging-vhost"
         - "traefik.http.middlewares.add-pfwb-ged-staging-vhost.addprefix.prefix=/VirtualHostBase/https/ged-staging.pfwb.be:443/pfwbged/VirtualHostRoot"
-    ports:
-      - 8080
     networks:
       - default
       - traefik
